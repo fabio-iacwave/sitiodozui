@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sítio do Zui — Aluguel para finais de semana e temporadas</title>
+  <meta name="description" content="Sítio com piscina, capacidade para até 21 pessoas, playground infantil, mesas de jogos, área gourmet com churrasqueira e forno de pizza. Reserve pelo WhatsApp." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Sítio do Zui — Locação para finais de semana e temporadas" />
+  <meta property="og:description" content="Piscina, área verde, espaço gourmet com forno de pizza, playground e jogos. Clique e fale no WhatsApp!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <meta property="og:url" content="https://seu-usuario.github.io/sitio-do-zui" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#f5f9f7',100:'#e6f3ec',200:'#c3e5d5',300:'#93cfb4',400:'#5fb792',500:'#3aa377',600:'#2f825f',700:'#276a4f',800:'#1f5240',900:'#173d31' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Swiper (carrossel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',system-ui} .hide{display:none}</style>
+  <link rel="icon" href="assets/favicon.ico">
+</head>
+<body class="bg-white text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-block w-9 h-9 rounded-2xl bg-brand-500/10 grid place-content-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10.5 12 3l9 7.5M4.5 10.5V21h15V10.5"/></svg>
+        </span>
+        <span class="font-extrabold text-lg">Sítio do Zui</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#galeria" class="hover:text-brand-700">Galeria</a>
+        <a href="#estrutura" class="hover:text-brand-700">Estrutura</a>
+        <a href="#homenagem" class="hover:text-brand-700">Homenagem</a>
+        <a href="#contato" class="hover:text-brand-700">Contato</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/sitiodozui/" target="_blank" rel="noopener" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5A3.5 3.5 0 0 1 14 6h3v3h-3a1 1 0 0 0-1 1V12h4l-.5 3h-3.5v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="#contato" class="hidden md:inline-flex bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-sm font-semibold">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative pt-10 md:pt-16 pb-8 bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Refúgio perfeito para reunir família e amigos</h1>
+        <p class="mt-4 text-slate-600 text-lg">Piscina, área verde, playground, mesas de jogos, churrasqueira e forno de pizza. Capacidade para até <strong>21 pessoas</strong>. Ideal para finais de semana, aniversários e confraternizações.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a id="ctaWhatsAppTopo" href="#contato" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-2xl font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20 12.05a8 8 0 1 1-15.28 3.44L4 21l5.6-1.47A8 8 0 1 1 20 12.05Zm-4.84 4.03c.2.13.47.1.64-.07l1.1-1.1a.5.5 0 0 0-.05-.74l-1.02-.77a.5.5 0 0 0-.5-.06l-.7.3c-.46.2-1 .14-1.4-.14a9.4 9.4 0 0 1-2.96-2.96c-.28-.4-.34-.94-.14-1.4l.3-.7a.5.5 0 0 0-.06-.5l-.77-1.02a.5.5 0 0 0-.74-.05l-1.1 1.1a.6.6 0 0 0-.07.64c.39.86 1.03 2.15 2.06 3.18 1.03 1.03 2.32 1.67 3.18 2.06Z"/></svg>
+            Reservar no WhatsApp
+          </a>
+          <a href="#galeria" class="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 px-5 py-3 rounded-2xl font-semibold">Ver Galeria</a>
+        </div>
+        <p class="mt-3 text-xs text-slate-500">Siga-nos: <a class="underline hover:text-brand-700" href="https://www.instagram.com/sitiodozui/" target="_blank">Instagram</a> • <a class="underline hover:text-brand-700" href="https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr" target="_blank">Facebook</a></p>
+      </div>
+      <div id="galeria" class="relative">
+        <!-- Carrossel dinâmico -->
+        <div class="swiper rounded-2xl shadow-xl" data-max="50" data-prefix="assets/imagem" data-ext=".jpg" data-video="assets/video.mp4">
+          <div class="swiper-wrapper"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <noscript>
+          <p class="text-sm text-slate-500 mt-2">Ative o JavaScript para ver toda a galeria. Exibindo exemplos:</p>
+          <div class="grid grid-cols-3 gap-2 mt-2">
+            <img src="assets/imagem1.jpg" alt="Imagem 1" class="w-full h-40 object-cover rounded"/>
+            <img src="assets/imagem2.jpg" alt="Imagem 2" class="w-full h-40 object-cover rounded"/>
+            <img src="assets/imagem3.jpg" alt="Imagem 3" class="w-full h-40 object-cover rounded"/>
+          </div>
+        </noscript>
+        <p class="text-xs text-slate-500 mt-2">Coloque suas fotos como <code>assets/imagem1.jpg</code>, <code>assets/imagem2.jpg</code>… Os números podem ter “buracos”: o carrossel ignora os que não existirem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estrutura -->
+  <section id="estrutura" class="py-14">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold">Tudo o que você precisa para curtir</h2>
+      <p class="mt-2 text-slate-600">Conforto, lazer e espaço para celebrar momentos especiais.</p>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 16c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Piscina</h3>
+          <p class="text-sm text-slate-600">Perfeita para o calor e para a diversão da família.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4Z"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Até 21 pessoas</h3>
+          <p class="text-sm text-slate-600">Acomoda grupos com conforto para finais de semana e eventos.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 20h18M5 20V9l7-4 7 4v11M8 20v-8m8 8v-8"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Playground infantil</h3>
+          <p class="text-sm text-slate-600">Espaço seguro e divertido para as crianças.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v6H4zM2 18h20"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Mesas de jogos</h3>
+          <p class="text-sm text-slate-600">Pebolim, pingue-pongue, sinuca e mesa de cartas.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3s3 2 3 5-3 5-3 5-3-2-3-5 3-5 3-5Zm-7 13h14v5H5z"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Churrasco & Forno de pizza</h3>
+          <p class="text-sm text-slate-600">Área gourmet ampla para suas confraternizações.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-brand-700"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 20h20M4 20V8m16 12V8M4 8l8-4 8 4"/></svg>
+          </div>
+          <h3 class="mt-3 font-bold">Área externa ampla</h3>
+          <p class="text-sm text-slate-600">Espaço verde para descansar e brincar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homenagem -->
+  <section id="homenagem" class="py-14 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="rounded-3xl bg-white border border-slate-200 p-6 md:p-10 shadow-sm">
+        <div class="grid md:grid-cols-[160px_1fr] gap-6 items-start">
+          <div class="w-40 h-40 rounded-2xl overflow-hidden bg-slate-100">
+            <img src="assets/imagem1.jpg" alt="Foto do fundador" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold">Homenagem ao nosso fundador</h2>
+            <p class="mt-2 text-slate-600">Em memória de <span class="font-semibold">[NOME DO FUNDADOR]</span>, cuja visão e dedicação transformaram este espaço em um lugar de encontros, alegria e boas histórias. Seu legado vive em cada detalhe do Sítio do Zui.</p>
+            <blockquote class="mt-4 border-l-4 border-brand-600 pl-4 italic text-slate-700">“[Inclua aqui uma frase marcante do fundador ou da família]”.</blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="py-14">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-extrabold">Disponibilidade & Reservas</h2>
+      <p class="mt-2 text-slate-600">Fale conosco pelo WhatsApp para consultar datas, valores e pacotes.</p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a id="linkWhatsApp" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-2xl font-semibold">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20 12.05a8 8 0 1 1-15.28 3.44L4 21l5.6-1.47A8 8 0 1 1 20 12.05Zm-4.84 4.03c.2.13.47.1.64-.07l1.1-1.1a.5.5 0 0 0-.05-.74l-1.02-.77a.5.5 0 0 0-.5-.06l-.7.3c-.46.2-1 .14-1.4-.14a9.4 9.4 0 0 1-2.96-2.96c-.28-.4-.34-.94-.14-1.4l.3-.7a.5.5 0 0 0-.06-.5l-.77-1.02a.5.5 0 0 0-.74-.05l-1.1 1.1a.6.6 0 0 0-.07.64c.39.86 1.03 2.15 2.06 3.18 1.03 1.03 2.32 1.67 3.18 2.06Z"/></svg>
+          Abrir conversa no WhatsApp
+        </a>
+        <a href="tel:+5511985462085" class="inline-flex items-center justify-center gap-2 border border-slate-200 hover:border-slate-300 px-6 py-3 rounded-2xl font-semibold">Ligar agora: (11) 98546-2085</a>
+      </div>
+      <p class="mt-3 text-xs text-slate-500">Ao clicar em “Abrir conversa no WhatsApp”, uma mensagem inicial será preenchida automaticamente.</p>
+    </div>
+  </section>
+
+  <!-- FAB WhatsApp -->
+  <a id="fabWhatsApp" href="#" target="_blank" rel="noopener" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-14 h-14 grid place-content-center shadow-xl" aria-label="Abrir WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M20 12.05a8 8 0 1 1-15.28 3.44L4 21l5.6-1.47A8 8 0 1 1 20 12.05Zm-4.84 4.03c.2.13.47.1.64-.07l1.1-1.1a.5.5 0 0 0-.05-.74l-1.02-.77a.5.5 0 0 0-.5-.06l-.7.3c-.46.2-1 .14-1.4-.14a9.4 9.4 0 0 1-2.96-2.96c-.28-.4-.34-.94-.14-1.4l.3-.7a.5.5 0 0 0-.06-.5l-.77-1.02a.5.5 0 0 0-.74-.05l-1.1 1.1a.6.6 0 0 0-.07.64c.39.86 1.03 2.15 2.06 3.18 1.03 1.03 2.32 1.67 3.18 2.06Z"/></svg>
+  </a>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 py-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© <span id="ano"></span> Sítio do Zui. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/sitiodozui/" target="_blank" rel="noopener" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5A3.5 3.5 0 0 1 14 6h3v3h-3a1 1 0 0 0-1 1V12h4l-.5 3h-3.5v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="#contato" class="p-2 rounded-xl hover:bg-slate-100" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M20 12.05a8 8 0 1 1-15.28 3.44L4 21l5.6-1.47A8 8 0 1 1 20 12.05Zm-4.84 4.03c.2.13.47.1.64-.07l1.1-1.1a.5.5 0 0 0-.05-.74l-1.02-.77a.5.5 0 0 0-.5-.06l-.7.3c-.46.2-1 .14-1.4-.14a9.4 9.4 0 0 1-2.96-2.96c-.28-.4-.34-.94-.14-1.4l.3-.7a.5.5 0 0 0-.06-.5l-.77-1.02a.5.5 0 0 0-.74-.05l-1.1 1.1a.6.6 0 0 0-.07.64c.39.86 1.03 2.15 2.06 3.18 1.03 1.03 2.32 1.67 3.18 2.06Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Ano, WhatsApp, Carrossel dinâmico -->
+  <script>
+    // Ano no rodapé
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // WhatsApp links
+    const phone = '5511985462085';
+    const defaultMsg = encodeURIComponent('Olá! Tenho interesse em locar o Sítio do Zui. Poderia me informar disponibilidade e valores?');
+    const wa = `https://api.whatsapp.com/send?phone=${phone}&text=${defaultMsg}`;
+    ['linkWhatsApp','fabWhatsApp','ctaWhatsAppTopo'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa; });
+
+    // Utilitário para checar imagem sem CORS (Image onload)
+    function checkImage(src){
+      return new Promise(resolve => {
+        const img=new Image();
+        img.onload=()=>resolve(true);
+        img.onerror=()=>resolve(false);
+        img.src=src + '?v=' + Date.now(); // evita cache forte em Pages
+      });
+    }
+    // Checar existência de vídeo por HEAD (pode falhar se desabilitado).
+    async function checkVideo(src){
+      try{ const r = await fetch(src, { method:'HEAD' }); return r.ok; }catch{ return false; }
+    }
+
+    // Monta slides dinamicamente (aceita "buracos" na numeração)
+    async function buildSlides(){
+      const swiperEl = document.querySelector('.swiper');
+      const wrap = swiperEl.querySelector('.swiper-wrapper');
+      const max = parseInt(swiperEl.dataset.max||'50',10);
+      const prefix = swiperEl.dataset.prefix||'assets/imagem';
+      const ext = swiperEl.dataset.ext||'.jpg';
+      const videoSrc = swiperEl.dataset.video||'';
+
+      let count=0;
+      for(let i=1;i<=max;i++){
+        const src = `${prefix}${i}${ext}`;
+        /* eslint-disable no-await-in-loop */
+        const ok = await checkImage(src);
+        if(ok){
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `Foto ${i} do Sítio do Zui`;
+          img.loading = 'lazy';
+          img.className = 'w-full h-[340px] md:h-[420px] object-cover';
+          slide.appendChild(img);
+          wrap.appendChild(slide);
+          count++;
+        }
+      }
+      if(videoSrc){
+        const vOk = await checkVideo(videoSrc);
+        if(vOk){
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          const vid = document.createElement('video');
+          vid.className = 'w-full h-[340px] md:h-[420px] object-cover';
+          vid.controls = true;
+          vid.playsInline = true;
+          vid.innerHTML = `<source src="${videoSrc}" type="video/mp4" />`;
+          slide.appendChild(vid);
+          wrap.appendChild(slide);
+        }
+      }
+      // Caso não tenha encontrado nenhuma imagem, mostra um aviso simples
+      if(count===0){
+        const placeholder = document.createElement('div');
+        placeholder.className='p-4 text-center text-slate-500';
+        placeholder.textContent='Adicione fotos em assets/imagem1.jpg, imagem2.jpg, ... para popular a galeria.';
+        swiperEl.replaceWith(placeholder);
+        return null;
+      }
+      return new Swiper('.swiper', {
+        loop: true,
+        spaceBetween: 16,
+        centeredSlides: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      });
+    }
+
+    window.addEventListener('load', buildSlides);
+  </script>
+
+  <!-- SEO Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Sítio do Zui",
+    "description": "Sítio com piscina, capacidade para até 21 pessoas, playground, mesas de jogos, área gourmet com churrasqueira e forno de pizza.",
+    "telephone": "+55 11 98546-2085",
+    "url": "https://seu-usuario.github.io/sitio-do-zui",
+    "sameAs": [
+      "https://www.instagram.com/sitiodozui/",
+      "https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr"
+    ]
+  }
+  </script>
+
+  <!-- Dicas:
+    - Coloque suas 13 fotos em assets/imagem1.jpg ... imagem13.jpg. Se faltar algum número, tudo bem.
+    - Para aumentar o limite, mude data-max="50" na div .swiper.
+    - Para compressão, use .webp (podemos habilitar fallback se quiser).
+  -->
+</body>
+</html>
