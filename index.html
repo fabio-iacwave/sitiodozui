@@ -34,11 +34,37 @@
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
+    html,body{max-width:100%;overflow-x:hidden}
     body{font-family:'Inter',system-ui}
     .hide{display:none}
-    .swiper{touch-action: pan-y; width:100%;}
+    .swiper{touch-action: pan-y; width:100%;box-sizing:border-box;max-width:100%;overflow:hidden}
+    .swiper-wrapper{align-items:center}
     .swiper-slide{overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .swiper-slide img,.swiper-slide video{width:100%;height:auto;object-fit:cover;max-width:100%;}
+    .swiper-slide img,.swiper-slide video{width:100%;height:auto;object-fit:cover;max-width:100vw;display:block}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center center;opacity:.7;pointer-events:none}
+    .hero-bg .overlay{position:absolute;inset:0;pointer-events:none}
+
+    /* Hero content contrast */
+    .hero-content h1{color:#ffffff}
+    .hero-content p{color:rgba(255,255,255,0.92)}
+    .hero-content h1{font-weight:800;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .hero-content a.secondary{border-color:rgba(255,255,255,0.32);color:#fff}
+    .hero-content .mt-3 a{color:rgba(255,255,255,0.85)}
+    /* Modal / Lightbox gallery */
+    .gallery-modal{position:fixed;inset:0;display:none;z-index:999999;align-items:center;justify-content:center;padding:20px}
+    .gallery-modal.active{display:flex}
+    .gallery-modal .backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.95);z-index:999999}
+    .gallery-modal .modal-inner{position:relative;max-width:1400px;width:100%;max-height:94vh;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);z-index:1000000}
+    .gallery-modal .modal-inner .swiper-slide{display:flex;align-items:center;justify-content:center;background:transparent}
+    .gallery-modal img{max-height:88vh;object-fit:contain;width:auto;max-width:100%;transition:transform .28s ease}
+    .gallery-modal img.zoomed{transform:scale(2);cursor:zoom-out}
+    .gallery-modal img{cursor:zoom-in}
+    .gallery-modal .close-btn{position:absolute;top:10px;right:10px;z-index:70;background:rgba(255,255,255,0.06);border-radius:8px;padding:8px;color:#fff;border:0}
+    .modal-open{overflow:hidden}
+    @media (max-width:768px){
+      .hero-bg img{object-position:center top;opacity:.65}
+      .swiper{max-width:420px;margin-left:auto;margin-right:0}
+    }
   </style>
   <link rel="icon" href="assets/favicon.ico">
 </head>
@@ -62,7 +88,7 @@
         <a href="https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5A3.5 3.5 0 0 1 14 6h3v3h-3a1 1 0 0 0-1 1V12h4l-.5 3h-3.5v7A10 10 0 0 0 22 12Z"/></svg>
         </a>
-        <a href="#contato" class="hidden md:inline-flex bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-sm font-semibold">Falar no WhatsApp</a>
+        <a id="headerWhatsApp" href="#" class="hidden md:inline-flex bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-sm font-semibold">Falar no WhatsApp</a>
       </div>
     </div>
   </header>
@@ -70,20 +96,19 @@
   <!-- Hero com banner de fundo translúcido -->
   <section class="relative min-h-[280px] md:min-h-[360px] flex items-center">
     <!-- Imagem de fundo -->
-    <div class="absolute inset-0 -z-10 pointer-events-none">
-      <img src="assets/banner.png" alt="Banner Sítio do Zui" class="w-full h-full object-cover opacity-40 pointer-events-none"/>
-      <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 -z-10 pointer-events-none hero-bg">
+      <img src="assets/banner.png" alt="Banner Sítio do Zui" class="w-full h-full object-cover opacity-70 pointer-events-none"/>
+      <div class="overlay" style="background: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.25), transparent)"></div>
     </div>
 
     <!-- Conteúdo em cima do fundo -->
     <div class="relative z-10 w-full">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center py-10">
-        <div>
+        <div class="hero-content">
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Refúgio perfeito para reunir família e amigos</h1>
           <p class="mt-4 text-slate-700 text-lg">Piscina, área verde, playground, mesas de jogos, churrasqueira e forno de pizza. Capacidade para até <strong>21 pessoas</strong>. Ideal para finais de semana, aniversários e confraternizações.</p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a id="ctaWhatsAppTopo" href="#contato" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-2xl font-semibold">Reservar no WhatsApp</a>
-            <a href="#galeria" class="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 px-5 py-3 rounded-2xl font-semibold">Ver Galeria</a>
           </div>
           <p class="mt-3 text-xs text-slate-600">Siga-nos: <a class="underline hover:text-brand-700" href="https://www.instagram.com/sitiodozui/" target="_blank">Instagram</a> • <a class="underline hover:text-brand-700" href="https://www.facebook.com/people/S%C3%ADtio-do-Zui/61572247573698/?mibextid=wwXIfr&rdid=ytF9aHmkZ7KX9T8Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18j6tK8gjc%2F%3Fmibextid%3DwwXIfr" target="_blank">Facebook</a></p>
         </div>
@@ -103,7 +128,19 @@
               <img src="assets/imagem3.jpg" alt="Imagem 3" class="w-full h-40 object-cover rounded"/>
             </div>
           </noscript>
-          <p class="text-xs text-slate-500 mt-2">Coloque suas fotos como <code>assets/imagem1.jpg</code>, <code>assets/imagem2.jpg</code>… Os números podem ter “buracos”: o carrossel ignora os que não existirem.</p>
+          <!-- Modal / Lightbox (inicialmente vazio; populado ao abrir) -->
+          <div class="gallery-modal" aria-hidden="true" role="dialog">
+            <div class="backdrop" tabindex="-1"></div>
+            <div class="modal-inner">
+              <button class="close-btn" aria-label="Fechar galeria">✕</button>
+              <div class="swiper gallery-swiper">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -227,7 +264,7 @@
     const phone = '5511985462085';
     const defaultMsg = encodeURIComponent('Olá! Tenho interesse em locar o Sítio do Zui. Poderia me informar disponibilidade e valores?');
     const wa = `https://api.whatsapp.com/send?phone=${phone}&text=${defaultMsg}`;
-    ['linkWhatsApp','fabWhatsApp','ctaWhatsAppTopo'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa; });
+    ['linkWhatsApp','fabWhatsApp','ctaWhatsAppTopo','headerWhatsApp'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa; });
 
     // Utilitário para checar imagem (via onload)
     function checkImage(src){
@@ -289,7 +326,7 @@
         swiperEl.replaceWith(placeholder);
         return null;
       }
-      return new Swiper('.swiper', {
+      const mainSwiper = new Swiper('.swiper', {
         loop: true,
         spaceBetween: 16,
         centeredSlides: true,
@@ -302,9 +339,136 @@
         autoplay: { delay: 4000, disableOnInteraction: false },
         breakpoints: { 768: { autoHeight: false } }
       });
+      return mainSwiper;
     }
 
-    window.addEventListener('load', buildSlides);
+    // Modal open/close logic: clona slides do carrossel principal para a modal e inicializa Swiper grande
+    let modalSwiper = null;
+    let mainSwiper = null;
+    async function openGalleryModal(startIndex=0){
+      const modal = document.querySelector('.gallery-modal');
+      const modalWrapper = modal.querySelector('.gallery-swiper .swiper-wrapper');
+      // helper: candidate high-res names
+      function highResCandidates(src){
+        return [
+          src.replace(/(\.[^.]+)$/, '-large$1'),
+          src.replace(/(\.[^.]+)$/, '@2x$1'),
+          src.replace(/(\.[^.]+)$/, '-hd$1')
+        ];
+      }
+
+      // populate only once
+      if(modalWrapper.children.length === 0){
+        const slides = document.querySelectorAll('.swiper .swiper-wrapper .swiper-slide');
+        for(const s of slides){
+          const clone = s.cloneNode(true);
+          // try to upgrade images in the clone to high-res (only here)
+          const imgs = clone.querySelectorAll('img');
+          for(const img of imgs){
+            const orig = img.getAttribute('src') || '';
+            const candidates = highResCandidates(orig);
+            for(const c of candidates){
+              // eslint-disable-next-line no-await-in-loop
+              const ok = await checkImage(c);
+              if(ok){ img.src = c; break; }
+            }
+          }
+          modalWrapper.appendChild(clone);
+        }
+      }
+
+      // ensure modal is direct child of body to avoid stacking-context issues
+      if(modal.parentNode !== document.body){ document.body.appendChild(modal); }
+      // open
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      // prevent background scroll on both html and body
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+
+      // init modal swiper if needed
+      if(!modalSwiper){
+        modalSwiper = new Swiper('.gallery-swiper', {
+          loop:true,
+          spaceBetween:20,
+          slidesPerView:1,
+          centeredSlides:true,
+          pagination:{ el: '.gallery-swiper .swiper-pagination', clickable:true },
+          navigation:{ nextEl: '.gallery-swiper .swiper-button-next', prevEl: '.gallery-swiper .swiper-button-prev' }
+        });
+
+        // attach zoom handlers to images inside modal
+        const modalImgs = document.querySelectorAll('.gallery-swiper .swiper-wrapper img');
+        modalImgs.forEach(img => {
+          let lastTap = 0;
+          function toggleZoom(e){
+            e.preventDefault && e.preventDefault();
+            img.classList.toggle('zoomed');
+          }
+          img.addEventListener('dblclick', toggleZoom);
+          img.addEventListener('click', (ev)=>{
+            const now = Date.now();
+            if(now - lastTap < 300) toggleZoom(ev);
+            lastTap = now;
+          });
+          img.addEventListener('touchend', (ev)=>{
+            const now = Date.now();
+            if(now - lastTap < 300){ ev.preventDefault(); toggleZoom(ev); }
+            lastTap = now;
+          }, {passive:false});
+        });
+        // if caller requested a particular start index, move there
+        if(typeof startIndex === 'number' && !Number.isNaN(startIndex)){
+          try{ modalSwiper.slideToLoop(startIndex, 0, false); }catch(e){}
+        }
+      }
+      else{
+        // already initialized: just go to requested index
+        try{ modalSwiper.slideToLoop(startIndex, 0, false); }catch(e){}
+      }
+    }
+
+    function closeGalleryModal(){
+      const modal = document.querySelector('.gallery-modal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      // destroy modal swiper to free memory (keeps cloned slides though)
+      if(modalSwiper){
+        try{ modalSwiper.destroy(true,true); }catch(e){}
+        modalSwiper = null;
+      }
+      // remove any zoom state
+      const modalImgs = document.querySelectorAll('.gallery-swiper .swiper-wrapper img.zoomed');
+      modalImgs.forEach(i=>i.classList.remove('zoomed'));
+      // restore scrolling
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+    }
+
+    window.addEventListener('load', async () => {
+      // build main carousel and capture instance
+      mainSwiper = await buildSlides();
+      // attach handlers
+      const modal = document.querySelector('.gallery-modal');
+      if(modal){
+        modal.querySelector('.close-btn').addEventListener('click', closeGalleryModal);
+        modal.querySelector('.backdrop').addEventListener('click', closeGalleryModal);
+        document.addEventListener('keydown', (ev)=>{ if(ev.key==='Escape') closeGalleryModal(); });
+      }
+
+      // also open modal when clicking any image in the main carousel
+      const mainSlides = document.querySelectorAll('.swiper .swiper-wrapper .swiper-slide');
+      mainSlides.forEach((s, idx) => {
+        const img = s.querySelector('img');
+        if(img){
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', (ev)=>{
+            ev.preventDefault();
+            openGalleryModal(idx);
+          });
+        }
+      });
+    });
   </script>
 
   <!-- SEO Schema -->
